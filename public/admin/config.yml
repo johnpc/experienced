@@ -1,0 +1,195 @@
+backend:
+  name: git-gateway
+  branch: main
+
+# Media files will be stored in the repo under static/images/uploads
+media_folder: "public/images/uploads"
+public_folder: "/images/uploads"
+
+# Collections define the structure for the different content types
+collections:
+  # Pages collection
+  - name: "pages"
+    label: "Pages"
+    folder: "content/pages"
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - { label: "Title", name: "title", widget: "string" }
+      - { label: "Slug", name: "slug", widget: "string", pattern: ['^[a-z0-9-]+$', 'Must be lowercase letters, numbers, and hyphens only'] }
+      - { label: "Publish Date", name: "publishedAt", widget: "datetime" }
+      - { label: "Status", name: "status", widget: "select", options: ["draft", "published"], default: "draft" }
+      - label: "SEO"
+        name: "seo"
+        widget: "object"
+        fields:
+          - { label: "Title", name: "title", widget: "string", hint: "Max 60 characters for optimal SEO" }
+          - { label: "Description", name: "description", widget: "text", hint: "Max 160 characters for optimal SEO" }
+          - { label: "Keywords", name: "keywords", widget: "list", allow_add: true, default: [] }
+          - { label: "OG Image", name: "ogImage", widget: "image", required: false }
+      - { label: "Body", name: "body", widget: "markdown" }
+
+  # Projects collection
+  - name: "projects"
+    label: "Projects"
+    folder: "content/projects"
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - { label: "Title", name: "title", widget: "string" }
+      - { label: "Description", name: "description", widget: "text", hint: "Brief project description" }
+      - { label: "Category", name: "category", widget: "select", options: ["kitchen", "bathroom", "addition", "renovation", "exterior", "commercial"] }
+      - { label: "Completed Date", name: "completedAt", widget: "datetime" }
+      - { label: "Featured Project", name: "featured", widget: "boolean", default: false }
+      - { label: "Status", name: "status", widget: "select", options: ["draft", "published"], default: "draft" }
+      - label: "Images"
+        name: "images"
+        widget: "list"
+        min: 1
+        fields:
+          - { label: "Image", name: "src", widget: "image" }
+          - { label: "Alt Text", name: "alt", widget: "string", hint: "Describe the image for accessibility" }
+          - { label: "Caption", name: "caption", widget: "string", required: false }
+      - label: "SEO"
+        name: "seo"
+        widget: "object"
+        fields:
+          - { label: "Title", name: "title", widget: "string", hint: "Max 60 characters for optimal SEO" }
+          - { label: "Description", name: "description", widget: "text", hint: "Max 160 characters for optimal SEO" }
+          - { label: "Keywords", name: "keywords", widget: "list", allow_add: true, default: [] }
+      - { label: "Content", name: "body", widget: "markdown", hint: "Detailed project description and process" }
+
+  # Services collection
+  - name: "services"
+    label: "Services"
+    folder: "content/services"
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - { label: "Title", name: "title", widget: "string" }
+      - { label: "Slug", name: "slug", widget: "string", pattern: ['^[a-z0-9-]+$', 'Must be lowercase letters, numbers, and hyphens only'] }
+      - { label: "Description", name: "description", widget: "text", hint: "Brief service description" }
+      - { label: "Order", name: "order", widget: "number", default: 0, hint: "Display order (lower numbers first)" }
+      - { label: "Featured Service", name: "featured", widget: "boolean", default: false }
+      - { label: "Status", name: "status", widget: "select", options: ["draft", "published"], default: "draft" }
+      - { label: "Icon", name: "icon", widget: "string", required: false, hint: "Icon name or class" }
+      - { label: "Featured Image", name: "featuredImage", widget: "image", required: false }
+      - label: "Gallery"
+        name: "gallery"
+        widget: "list"
+        required: false
+        fields:
+          - { label: "Image", name: "src", widget: "image" }
+          - { label: "Alt Text", name: "alt", widget: "string" }
+          - { label: "Caption", name: "caption", widget: "string", required: false }
+      - label: "SEO"
+        name: "seo"
+        widget: "object"
+        fields:
+          - { label: "Title", name: "title", widget: "string", hint: "Max 60 characters for optimal SEO" }
+          - { label: "Description", name: "description", widget: "text", hint: "Max 160 characters for optimal SEO" }
+          - { label: "Keywords", name: "keywords", widget: "list", allow_add: true, default: [] }
+      - { label: "Content", name: "body", widget: "markdown" }
+
+  # Blog posts collection
+  - name: "blog"
+    label: "Blog Posts"
+    folder: "content/blog"
+    create: true
+    slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
+    fields:
+      - { label: "Title", name: "title", widget: "string" }
+      - { label: "Slug", name: "slug", widget: "string", pattern: ['^[a-z0-9-]+$', 'Must be lowercase letters, numbers, and hyphens only'] }
+      - { label: "Excerpt", name: "excerpt", widget: "text", hint: "Brief post summary" }
+      - { label: "Author", name: "author", widget: "string", default: "Premier Construction Team" }
+      - { label: "Publish Date", name: "publishedAt", widget: "datetime" }
+      - { label: "Status", name: "status", widget: "select", options: ["draft", "published"], default: "draft" }
+      - { label: "Category", name: "category", widget: "string", hint: "e.g., Tips, Projects, News" }
+      - { label: "Tags", name: "tags", widget: "list", allow_add: true, default: [] }
+      - { label: "Featured Image", name: "featuredImage", widget: "image", required: false }
+      - label: "SEO"
+        name: "seo"
+        widget: "object"
+        fields:
+          - { label: "Title", name: "title", widget: "string", hint: "Max 60 characters for optimal SEO" }
+          - { label: "Description", name: "description", widget: "text", hint: "Max 160 characters for optimal SEO" }
+          - { label: "Keywords", name: "keywords", widget: "list", allow_add: true, default: [] }
+      - { label: "Body", name: "body", widget: "markdown" }
+
+  # Testimonials collection
+  - name: "testimonials"
+    label: "Testimonials"
+    folder: "content/testimonials"
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - { label: "Customer Name", name: "name", widget: "string" }
+      - { label: "Company", name: "company", widget: "string", required: false }
+      - { label: "Rating", name: "rating", widget: "number", min: 1, max: 5, default: 5 }
+      - { label: "Testimonial", name: "content", widget: "text" }
+      - { label: "Avatar", name: "avatar", widget: "image", required: false }
+      - { label: "Related Project", name: "projectId", widget: "string", required: false, hint: "Project slug this testimonial relates to" }
+      - { label: "Featured", name: "featured", widget: "boolean", default: false }
+      - { label: "Date", name: "publishedAt", widget: "datetime" }
+
+# Site settings (single file)
+- name: "settings"
+  label: "Site Settings"
+  files:
+    - label: "General Settings"
+      name: "general"
+      file: "content/settings/general.yml"
+      fields:
+        - { label: "Site Name", name: "siteName", widget: "string" }
+        - { label: "Site URL", name: "siteUrl", widget: "string" }
+        - { label: "Site Description", name: "description", widget: "text" }
+        - { label: "Logo", name: "logo", widget: "image", required: false }
+        - { label: "Favicon", name: "favicon", widget: "image", required: false }
+        - label: "Contact Information"
+          name: "contact"
+          widget: "object"
+          fields:
+            - { label: "Phone", name: "phone", widget: "string" }
+            - { label: "Email", name: "email", widget: "string" }
+            - label: "Address"
+              name: "address"
+              widget: "object"
+              fields:
+                - { label: "Street", name: "street", widget: "string" }
+                - { label: "City", name: "city", widget: "string" }
+                - { label: "State", name: "state", widget: "string" }
+                - { label: "ZIP Code", name: "zipCode", widget: "string" }
+                - { label: "Country", name: "country", widget: "string", default: "US" }
+            - label: "Business Hours"
+              name: "businessHours"
+              widget: "list"
+              fields:
+                - { label: "Day", name: "day", widget: "string" }
+                - { label: "Open", name: "open", widget: "string", hint: "e.g., 08:00" }
+                - { label: "Close", name: "close", widget: "string", hint: "e.g., 17:00" }
+                - { label: "Closed", name: "closed", widget: "boolean", default: false }
+        - label: "Social Media"
+          name: "social"
+          widget: "object"
+          fields:
+            - { label: "Facebook", name: "facebook", widget: "string", required: false }
+            - { label: "Instagram", name: "instagram", widget: "string", required: false }
+            - { label: "Twitter", name: "twitter", widget: "string", required: false }
+            - { label: "LinkedIn", name: "linkedin", widget: "string", required: false }
+            - { label: "YouTube", name: "youtube", widget: "string", required: false }
+        - label: "SEO Defaults"
+          name: "seo"
+          widget: "object"
+          fields:
+            - { label: "Default Title", name: "defaultTitle", widget: "string" }
+            - { label: "Title Template", name: "titleTemplate", widget: "string", hint: "Use %s for page title placeholder" }
+            - { label: "Default Description", name: "defaultDescription", widget: "text" }
+            - { label: "Default Keywords", name: "defaultKeywords", widget: "list", allow_add: true, default: [] }
+            - { label: "Default OG Image", name: "ogImage", widget: "image" }
+            - { label: "Twitter Handle", name: "twitterHandle", widget: "string", required: false }
+
+# Editorial workflow
+publish_mode: editorial_workflow
+
+# Enable local backend for development
+local_backend: true

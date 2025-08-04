@@ -1,0 +1,70 @@
+siteName: 'Premier Construction & Remodeling'
+siteUrl: 'https://premierconstructionco.com'
+description: 'Professional construction and remodeling services for residential and commercial properties. Quality craftsmanship, reliable service, and exceptional results for over 20 years.'
+
+contact:
+  phone: '(555) 123-4567'
+  email: 'info@premierconstructionco.com'
+  address:
+    street: '123 Construction Way'
+    city: 'Builder City'
+    state: 'CA'
+    zipCode: '12345'
+    country: 'US'
+  businessHours:
+    - day: 'Monday'
+      open: '8:00 AM'
+      close: '5:00 PM'
+      closed: false
+    - day: 'Tuesday'
+      open: '8:00 AM'
+      close: '5:00 PM'
+      closed: false
+    - day: 'Wednesday'
+      open: '8:00 AM'
+      close: '5:00 PM'
+      closed: false
+    - day: 'Thursday'
+      open: '8:00 AM'
+      close: '5:00 PM'
+      closed: false
+    - day: 'Friday'
+      open: '8:00 AM'
+      close: '5:00 PM'
+      closed: false
+    - day: 'Saturday'
+      open: '9:00 AM'
+      close: '3:00 PM'
+      closed: false
+    - day: 'Sunday'
+      open: ''
+      close: ''
+      closed: true
+
+social:
+  facebook: 'https://www.facebook.com/premierconstructionco'
+  instagram: 'https://www.instagram.com/premierconstructionco'
+  twitter: 'https://www.twitter.com/premierconstructionco'
+  linkedin: 'https://www.linkedin.com/company/premierconstructionco'
+  youtube: 'https://www.youtube.com/premierconstructionco'
+
+seo:
+  defaultTitle: 'Premier Construction & Remodeling - Quality Construction Services'
+  titleTemplate: '%s | Premier Construction & Remodeling'
+  defaultDescription: 'Professional construction and remodeling services for your home and business. Quality craftsmanship, reliable service, and exceptional results for over 20 years.'
+  defaultKeywords:
+    - 'construction'
+    - 'remodeling'
+    - 'renovation'
+    - 'contractor'
+    - 'home improvement'
+    - 'kitchen remodel'
+    - 'bathroom renovation'
+    - 'home additions'
+    - 'commercial construction'
+    - 'residential construction'
+  ogImage: '/images/og-default.jpg'
+  twitterHandle: '@premierconstructionco'
+
+logo: '/images/logo.png'
+favicon: '/images/favicon.ico'
